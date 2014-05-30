@@ -1,0 +1,33 @@
+{
+  "name": "antic",
+  "version": "0.0.0",
+  "description": "Atari 800 series emulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/asterick/antic.git"
+  },
+  "keywords": [
+    "atari",
+    "emulator",
+    "harmony"
+  ],
+  "author": "Bryon Vandiver",
+  "license": "mit",
+  "bugs": {
+    "url": "https://github.com/asterick/antic/issues"
+  },
+  "dependencies": {
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-connect": "~0.7.1",
+    "browserify": "~4.1.6",
+    "grunt-browserify": "~2.1.0",
+    "grunt-contrib-less": "~0.11.1",
+    "browserify-ejs": "0.0.2"
+  }
+}
