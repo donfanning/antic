@@ -8,29 +8,33 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		browserify: {
-			options: {
-				"transform-options": {
-					"node-lessify": "textMode"
+		less: {
+			dev: {
+				options: {
+					style: 'expanded'
 				},
-				transform: ["browserify-ejs", "node-lessify"]
-			},
-
-			prod: {
 				files: {
-					'public/main.js': ['src/**/*']
+					'public/assets/main.css': 'less/main.less'
 				}
-			},
-
+			}
+		},
+		browserify: {
 			dev: {
 				files: {
-					'public/main.js': ['src/**/*']
+					'public/assets/main.js': ['src/**/*']
 				},
 				options: {
+					transform: ["browserify-ejs"],
 					bundleOptions: { debug: true },
-					watch: true,
-					keepAlive: true,
+					watch: true
 				}
+			}
+		},
+		watch: {
+			less: {
+				options: { atBegin: true },
+				files: ["less/**/*"],
+				tasks: ["less"]
 			}
 		}
 	};
@@ -38,9 +42,10 @@ module.exports = function(grunt) {
 	grunt.initConfig(config);
 
 	grunt.loadNpmTasks('grunt-browserify');
+	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask("default", ["browserify:prod"]);
-	grunt.registerTask("dev", ["connect", "browserify:dev"]);
+	grunt.registerTask("default", ["less", "browserify"]);
+	grunt.registerTask("dev", ["connect", "browserify", "watch"]);
 };

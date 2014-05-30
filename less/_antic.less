@@ -1,0 +1,48 @@
+@import "_variables";
+
+antic {
+	.vertical-gradient {
+		background: rgb(122,188,255); /* Old browsers */
+		background: -moz-linear-gradient(top,  @background-color-light 0%, @background-color-dark 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@background-color-light), color-stop(100%,@background-color-dark)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  @background-color-light 0%,@background-color-dark 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  @background-color-light 0%,@background-color-dark 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  @background-color-light 0%,@background-color-dark 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  @background-color-light 0%,@background-color-dark 100%); /* W3C */
+	}
+
+	&, & * {
+		box-sizing: border-box;
+	}
+
+	& {
+		display: inline-block;
+		position: relative;
+		border: 1px solid @border-color;
+		background: @background-color-light;
+		border-radius: @border-radius;
+		border-top-right-radius: 0;
+		text-align: left;
+	}
+
+	.screen {
+		display: inline-block;
+		margin: @default-padding;
+		width: @canvas-width * 2;
+		height: @canvas-height * 2;
+		background: #f0f;
+	}
+
+	.debugger {
+		box-sizing: content-box;
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		left: 100%;
+
+		background: @background-color-light;
+		border-top-right-radius: @border-radius;
+		border-top-right-radius: @border-radius;
+
+	}
+}
