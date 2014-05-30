@@ -1,15 +1,5 @@
 module.exports = function(grunt) {
 	var config = {
-		less: {
-			dev: {
-				options: {
-					style: 'expanded'
-				},
-				files: {
-					'public/assets/main.css': 'less/main.less'
-				}
-			}
-		},
 		connect: {
 			server: {
 				options: {
@@ -18,35 +8,29 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		uglify: {
+		browserify: {
 			options: {
-				mangle: true,
-				compress: { warnings: false },
-				preserveComments: 'some'
+				"transform-options": {
+					"node-lessify": "textMode"
+				},
+				transform: ["browserify-ejs", "node-lessify"]
 			},
+
 			prod: {
 				files: {
-					'public/main.min.js': ['public/main.js']
+					'public/main.js': ['src/**/*']
 				}
-			}
-		},
-		browserify: {
+			},
+
 			dev: {
+				files: {
+					'public/main.js': ['src/**/*']
+				},
 				options: {
 					bundleOptions: { debug: true },
-					transform: ["browserify-ejs"],
-					watch: true
-				},
-				files: {
-					'public/main.js': ['src/**/*.js']
+					watch: true,
+					keepAlive: true,
 				}
-			}
-		},
-		watch: {
-			sass: {
-				files: ["less/**/*"],
-				tasks: ["less"],
-				options: { atBegin: true }
 			}
 		}
 	};
@@ -56,9 +40,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	grunt.registerTask("default", ["browserify", "less"]);
-	grunt.registerTask("dev", ["connect", "browserify", "watch"]);
+	grunt.registerTask("default", ["browserify:prod"]);
+	grunt.registerTask("dev", ["connect", "browserify:dev"]);
 };
