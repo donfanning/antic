@@ -28,21 +28,72 @@ antic {
 	.screen {
 		display: inline-block;
 		margin: @default-padding;
-		width: @canvas-width * 2;
-		height: @canvas-height * 2;
+		width: @canvas-width;
+		height: @canvas-height;
 		background: #f0f;
 	}
 
 	.debugger {
+		font-family: monospace;
 		box-sizing: content-box;
 		display: inline-block;
-		position: absolute;
-		top: 0;
-		left: 100%;
 
 		background: @background-color-light;
 		border-top-right-radius: @border-radius;
 		border-top-right-radius: @border-radius;
 
+		.disassembly {
+			.row {
+				display: block;
+
+				&:before {
+					display: inline;
+					content: attr(address) ": ";
+				}
+			}
+		}
+
+		.registers {
+			max-width: 10ex;
+			.register {
+				display: inline-block;
+
+				&:before {
+					text-align: left;
+					display: inline-block;
+					width: 3ex;
+					content: attr(name);
+				}
+				&:after {
+					display: inline-block;
+					text-align: center;
+					background: white;
+					width: 5ex;
+					content: attr(value);
+				}
+			}
+			.flags {
+				.flag {
+					display: inline-block;
+
+					&:before {
+						display: block;
+						text-align: center;
+						content: attr(name);
+					}
+					&:after {
+						display: inline-block;
+						text-align: center;
+						background: white;
+						content: '\00a0';
+						width: 1em;
+						height: 1em;
+					}
+					&.active:after {
+						content: '\2713';
+					}
+				}
+			}
+		}
 	}
 }
