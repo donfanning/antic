@@ -1,0 +1,736 @@
+[
+    {
+        "addressing": "implied",
+        "instruction": "BRK",
+        "cycles": "7"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "ORA",
+        "cycles": "6"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "ORA",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "ASL",
+        "cycles": "5"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "PHP",
+        "cycles": "3"
+    }, {
+        "addressing": "immediate",
+        "instruction": "ORA",
+        "cycles": "2"
+    }, {
+        "addressing": "accumulator",
+        "instruction": "ASL",
+        "cycles": "2"
+    },
+    null, null,
+    {
+        "addressing": "absolute",
+        "instruction": "ORA",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "ASL",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BPL",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "ORA",
+        "cycles": "5"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "ORA",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "ASL",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "CLC",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "ORA",
+        "cycles": "4"
+    },
+    null, null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "ORA",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "ASL",
+        "cycles": "7"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "JSR",
+        "cycles": "6"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "AND",
+        "cycles": "6"
+    },
+    null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "BIT",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "AND",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "ROL",
+        "cycles": "5"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "PLP",
+        "cycles": "4"
+    }, {
+        "addressing": "immediate",
+        "instruction": "AND",
+        "cycles": "2"
+    }, {
+        "addressing": "accumulator",
+        "instruction": "ROL",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "BIT",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "AND",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "ROL",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BMI",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "AND",
+        "cycles": "5"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "AND",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "ROL",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "SEC",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "AND",
+        "cycles": "4"
+    },
+    null, null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "AND",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "ROL",
+        "cycles": "7"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "RTI",
+        "cycles": "6"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "EOR",
+        "cycles": "6"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "EOR",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "LSR",
+        "cycles": "5"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "PHA",
+        "cycles": "3"
+    }, {
+        "addressing": "immediate",
+        "instruction": "EOR",
+        "cycles": "2"
+    }, {
+        "addressing": "accumulator",
+        "instruction": "LSR",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "JMP",
+        "cycles": "3"
+    }, {
+        "addressing": "absolute",
+        "instruction": "EOR",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "LSR",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BVC",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "EOR",
+        "cycles": "5"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "EOR",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "LSR",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "CLI",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "EOR",
+        "cycles": "4"
+    },
+    null, null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "EOR",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "LSR",
+        "cycles": "7"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "RTS",
+        "cycles": "6"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "ADC",
+        "cycles": "6"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "ADC",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "ROR",
+        "cycles": "5"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "PLA",
+        "cycles": "4"
+    }, {
+        "addressing": "immediate",
+        "instruction": "ADC",
+        "cycles": "2"
+    }, {
+        "addressing": "accumulator",
+        "instruction": "ROR",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "indirect",
+        "instruction": "JMP",
+        "cycles": "5"
+    }, {
+        "addressing": "absolute",
+        "instruction": "ADC",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "ROR",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BVS",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "ADC",
+        "cycles": "5"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "ADC",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "ROR",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "SEI",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "ADC",
+        "cycles": "4"
+    },
+    null, null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "ADC",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "ROR",
+        "cycles": "7"
+    },
+    null, null,
+    {
+        "addressing": "indirectX",
+        "instruction": "STA",
+        "cycles": "6"
+    },
+    null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "STY",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "STA",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "STX",
+        "cycles": "3"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "DEY",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "TXA",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "STY",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "STA",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "STX",
+        "cycles": "4"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BCC",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "STA",
+        "cycles": "6"
+    },
+    null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "STY",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "STA",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageY",
+        "instruction": "STX",
+        "cycles": "4"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "TYA",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "STA",
+        "cycles": "5"
+    }, {
+        "addressing": "implied",
+        "instruction": "TXS",
+        "cycles": "2"
+    },
+    null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "STA",
+        "cycles": "5"
+    },
+    null, null,
+    {
+        "addressing": "immediate",
+        "instruction": "LDY",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "LDA",
+        "cycles": "6"
+    }, {
+        "addressing": "immediate",
+        "instruction": "LDX",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "zeropage",
+        "instruction": "LDY",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "LDA",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "LDX",
+        "cycles": "3"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "TAY",
+        "cycles": "2"
+    }, {
+        "addressing": "immediate",
+        "instruction": "LDA",
+        "cycles": "2"
+    }, {
+        "addressing": "implied",
+        "instruction": "TAX",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "LDY",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "LDA",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "LDX",
+        "cycles": "4"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BCS",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "LDA",
+        "cycles": "5"
+    },
+    null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "LDY",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "LDA",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageY",
+        "instruction": "LDX",
+        "cycles": "4"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "CLV",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "LDA",
+        "cycles": "4"
+    }, {
+        "addressing": "implied",
+        "instruction": "TSX",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "LDY",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "LDA",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "LDX",
+        "cycles": "4"
+    },
+    null,
+    {
+        "addressing": "immediate",
+        "instruction": "CPY",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "CMP",
+        "cycles": "6"
+    },
+    null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "CPY",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "CMP",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "DEC",
+        "cycles": "5"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "INY",
+        "cycles": "2"
+    }, {
+        "addressing": "immediate",
+        "instruction": "CMP",
+        "cycles": "2"
+    }, {
+        "addressing": "implied",
+        "instruction": "DEX",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "CPY",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "CMP",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "DEC",
+        "cycles": "3"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BNE",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "CMP",
+        "cycles": "5"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "CMP",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "DEC",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "CLD",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "CMP",
+        "cycles": "4"
+    },
+    null, null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "CMP",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "DEC",
+        "cycles": "7"
+    },
+    null,
+    {
+        "addressing": "immediate",
+        "instruction": "CPX",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectX",
+        "instruction": "SBC",
+        "cycles": "6"
+    },
+    null, null,
+    {
+        "addressing": "zeropage",
+        "instruction": "CPX",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "SBC",
+        "cycles": "3"
+    }, {
+        "addressing": "zeropage",
+        "instruction": "INC",
+        "cycles": "5"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "INX",
+        "cycles": "2"
+    }, {
+        "addressing": "immediate",
+        "instruction": "SBC",
+        "cycles": "2"
+    }, {
+        "addressing": "implied",
+        "instruction": "NOP",
+        "cycles": "2"
+    },
+    null,
+    {
+        "addressing": "absolute",
+        "instruction": "CPX",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "SBC",
+        "cycles": "4"
+    }, {
+        "addressing": "absolute",
+        "instruction": "INC",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "relative",
+        "instruction": "BEQ",
+        "cycles": "2"
+    }, {
+        "addressing": "indirectY",
+        "instruction": "SBC",
+        "cycles": "5"
+    },
+    null, null, null,
+    {
+        "addressing": "zeropageX",
+        "instruction": "SBC",
+        "cycles": "4"
+    }, {
+        "addressing": "zeropageX",
+        "instruction": "INC",
+        "cycles": "6"
+    },
+    null,
+    {
+        "addressing": "implied",
+        "instruction": "SED",
+        "cycles": "2"
+    }, {
+        "addressing": "absoluteY",
+        "instruction": "SBC",
+        "cycles": "4"
+    },
+    null, null, null,
+    {
+        "addressing": "absoluteX",
+        "instruction": "SBC",
+        "cycles": "4"
+    }, {
+        "addressing": "absoluteX",
+        "instruction": "INC",
+        "cycles": "7"
+    },
+    null
+]
