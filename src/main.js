@@ -1,7 +1,5 @@
-var instr = require("./cpu/instructions.json"),
+var cpu = require("./cpu/6502c.js"),
 	tmpl = require("./views/main.ejs");
-
-console.log(instr[0])
 
 Array.prototype.forEach.call(document.querySelectorAll("antic"), function (el) {
 	el.innerHTML = tmpl({});

@@ -2,11 +2,9 @@
 
 <div class="debugger">
 	<div class="disassembly">
-		<div class="row" address="FF00">ADC ($FF), X</div>
-		<div class="row" address="FF00">ADC ($FF), X</div>
-		<div class="row" address="FF00">ADC ($FF), X</div>
-		<div class="row" address="FF00">ADC ($FF), X</div>
-		<div class="row" address="FF00">ADC ($FF), X</div>
+		<% for (var i = 0; i < 10; i++) { %>
+			<div class="row" address="FF00"></div>
+		<% } %>
 	</div>
 	<div class="registers">
 		<div class="register" name="PC" value="0000"></div>
