@@ -46,9 +46,53 @@ antic {
 			.row {
 				display: block;
 
+				&.current {
+					background: #F0F;
+				}
+
 				&:before {
+					min-width: 9ex;
+					display: inline-block;
+					text-align: right;
+					content: attr(address) ":\00a0";
+				}
+
+				&:after {
 					display: inline;
-					content: attr(address) ": ";
+					content: "Invalid";
+				}
+
+				&.valid {
+					// This is just for emergencies
+					&:after { content: "?!?"; }
+
+					&[mode="impl"]:after {
+						content: attr(operation);
+					}
+					&[mode="A"]:after {
+						content: attr(operation) " A";
+					}
+					&[mode="#"]:after {
+						content: attr(operation) " #" attr(immediate);
+					}
+					&[mode="rel"]:after, &[mode="zpg"]:after, &[mode="abs"]:after, &[mode="specl"]:after {
+						content: attr(operation) " " attr(immediate);
+					}
+					&[mode="zpg,X"]:after, &[mode="abs,X"]:after {
+						content: attr(operation) " " attr(immediate) ", X";
+					}
+					&[mode="zpg,Y"]:after, &[mode="abs,Y"]:after {
+						content: attr(operation) " " attr(immediate) ", Y";
+					}
+					&[mode="X,ind"]:after {
+						content: attr(operation) " (" attr(immediate) ", X)";
+					}
+					&[mode="ind,Y"]:after {
+						content: attr(operation) " (" attr(immediate) "), Y";
+					}
+					&[mode="ind"]:after {
+						content: attr(operation) " (" attr(immediate) ")";
+					}
 				}
 			}
 		}

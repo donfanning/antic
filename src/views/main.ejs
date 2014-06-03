@@ -1,9 +1,15 @@
 <canvas width="384" height="240" class="screen"></canvas>
 
 <div class="debugger">
+	<div class="actions">
+		<button class="action" data-event="step">Step</button>
+		<button class="action" data-event="run">Run</button>
+		<button class="action" data-event="stop">Stop</button>
+		<button class="action" data-event="reset">Reset</button>
+	</div>
 	<div class="disassembly">
-		<% for (var i = 0; i < 10; i++) { %>
-			<div class="row" address="FF00"></div>
+		<% for (var i = 0; i < 31; i++) { %>
+			<div class="row"></div>
 		<% } %>
 	</div>
 	<div class="registers">
@@ -15,13 +21,12 @@
 		<div class="register" name="P"  value="0000"></div>
 
 		<div class="flags">
-			<div class="flag" name="N"></div>
-			<div class="flag" name="V"></div>
-			<div class="flag" name="C"></div>
-			<div class="flag" name="Z"></div>
-			<div class="flag active" name="B"></div>
-			<div class="flag active" name="D"></div>
-			<div class="flag active" name="I"></div>
+			<div class="flag" name="N" value="0x80"></div>
+			<div class="flag" name="V" value="0x40"></div>
+			<div class="flag" name="D" value="0x08"></div>
+			<div class="flag" name="I" value="0x04"></div>
+			<div class="flag" name="Z" value="0x02"></div>
+			<div class="flag" name="C" value="0x01"></div>
 		</div>
 	</div>
 </div>
