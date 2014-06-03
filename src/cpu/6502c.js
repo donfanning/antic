@@ -175,14 +175,14 @@ CPU.prototype._runtime = function* () {
 			break ;
 		case ZEROPAGE_X:
 			ea = this._nextbyte();
-			this._peak(ea);
+			this._peek(ea);
 			yield null;
 			ea = (ea + this.x) & 0xFF;
 			yield null;
 			break ;
 		case ZEROPAGE_Y:
 			ea = this._nextbyte();
-			this._peak(ea);
+			this._peek(ea);
 			yield null;
 			ea = (ea + this.y) & 0xFF;
 			yield null;
@@ -224,7 +224,7 @@ CPU.prototype._runtime = function* () {
 		case INDIRECT_X:
 			temp = this._nextbyte();
 			yield null;
-			this._peak(temp);
+			this._peek(temp);
 			temp += this.x;
 			yield null;
 			ea = this._peek(temp++ & 0xFF);
