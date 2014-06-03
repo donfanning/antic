@@ -105,7 +105,7 @@ module.exports = [
     { "operation": "ADC", "mode": constants.ZEROPAGE, "immediate": 8 },
     { "operation": "ROR", "mode": constants.ZEROPAGE, "immediate": 8 },
     null,
-    { "operation": "PLA", "mode": constants.IMPLIED, "immediate": null },
+    { "operation": "PLA", "mode": constants.SPECIAL, "immediate": null },
     { "operation": "ADC", "mode": constants.IMMEDIATE, "immediate": 8 },
     { "operation": "ROR", "mode": constants.ACCUMULATOR, "immediate": null },
     null,

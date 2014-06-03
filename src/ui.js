@@ -54,6 +54,12 @@ UI.prototype.update = function () {
 		cpu = machine.cpu,
 		pc = cpu._operation_address;
 
+	function toHex(v, l) {
+		v = v.toString(16).toUpperCase();
+		while (v.length < l) { v = "0" + v; }
+		return v;
+	}
+
 	this.registers.forEach(function(el) {
 		var val = cpu[el.getAttribute("name").toLowerCase()];
 		el.setAttribute("value", val.toString(16).toUpperCase());
@@ -96,10 +102,11 @@ UI.prototype.update = function () {
 		el.classList.toggle("valid", output.operation);
 		el.classList.toggle("current", output.start == pc);
 
-		el.setAttribute("address", output.start.toString(16).toUpperCase());
+		el.setAttribute("address", toHex(output.start, 4));
 		el.setAttribute("operation", output.operation);
 		el.setAttribute("mode", output.mode);
 		el.setAttribute("immediate", output.immediate);
+		el.setAttribute("bytes", output.bytes);
 	});
 
 	this._previous_address = start_address;

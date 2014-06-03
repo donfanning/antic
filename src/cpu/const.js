@@ -9,8 +9,8 @@ module.exports = {
 	INDIRECT_X: "X,ind",
 	INDIRECT_Y: "ind,Y",
 	ABSOLUTE: "abs",
-	ABSOLUTE_X: "abs,Y",
-	ABSOLUTE_Y: "abs,X",
+	ABSOLUTE_X: "abs,X",
+	ABSOLUTE_Y: "abs,Y",
 	INDIRECT: "ind",
 	SPECIAL: "specl"
 };
