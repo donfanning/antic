@@ -1,3 +1,13 @@
+/**
+	Currently Missing Operations:
+
+	ASL	....	arithmetic shift left
+	LSR	....	logical shift right
+	ROL	....	rotate left
+	ROR	....	rotate right
+
+ **/
+
 var constants = require("./const.js");
 
 var IMPLIED = constants.IMPLIED,
@@ -78,27 +88,25 @@ CPU.prototype._nextbyte = function () {
 };
 
 CPU.prototype._interrupt = function* (opcode, block_write) {
-	// Cycle 2
-	this[block_write ? "_poke" : "_peek"](this.s | 0x100, this.pc >> 8);
-	this.s = (this.s + 1) & 0xFF;
-	yield null;
 	// Cycle 3
-	this[block_write ? "_poke" : "_peek"](this.s | 0x100, this.pc & 0xFF);
-	this.s = (this.s + 1) & 0xFF;
+	this[block_write ? "_peek" : "_poke"](this.s | 0x100, this.pc >> 8);
+	this.s = (this.s - 1) & 0xFF;
 	yield null;
 	// Cycle 4
-	this[block_write ? "_poke" : "_peek"](this.s | 0x100, this.p | (opcode ? 0x10 : 0));
-	this.s = (this.s + 1) & 0xFF;
+	this[block_write ? "_peek" : "_poke"](this.s | 0x100, this.pc & 0xFF);
+	this.s = (this.s - 1) & 0xFF;
 	yield null;
 	// Cycle 5
+	this[block_write ? "_peek" : "_poke"](this.s | 0x100, this.p | (opcode ? 0x10 : 0));
+	this.s = (this.s - 1) & 0xFF;
+	yield null;
+	// Cycle 6
 	var vector = this._reset ? RESET_VECTOR : (this._nmi ? NMI_VECTOR : IRQ_VECTOR);
 	this.pc = this._peek(vector++);
 	yield null;
-	// Cycle 6
+	// Cycle 7
 	this.pc |= this._peek(vector) << 8;
 	yield null;
-
-	this._reset = false;
 }
 
 CPU.prototype._runtime = function* () {
@@ -120,17 +128,24 @@ CPU.prototype._runtime = function* () {
 	while (true) {
 		this._operation_address = this.pc;
 
-		// Cycle 0: Fetch instruction (ignored for interrupts)
-		var operation = instructions[this._nextbyte()];
-		if (!operation) { throw new Error("Processor has jammed"); }
-
-		yield null;
-
 		// Interrupt / reset logic
-		if (this._irq || this._nmi || this._reset) {
+		if ((!flags.i && this._irq) || this._nmi || this._reset) {
+			if (!flags.i && this._irq) flags.i = true;
+
+			this._peek(this.pc);
+			yield null;
+			this._peek(this.pc);
+			yield null;
+
 			yield* this._interrupt(false, this._reset);
 			continue ;
 		}
+
+		// Cycle 0: Fetch instruction (ignored for interrupts)
+		var operation = instructions[this._nextbyte()];
+		yield null;
+
+		if (!operation) { throw new Error("Processor has jammed"); }
 
 		// Begin calculating effective address
 		switch (operation.mode) {
@@ -293,7 +308,11 @@ CPU.prototype._runtime = function* () {
 				break ;
 
 			case "BRK":
+				this._nextbyte();
+				yield null;
+
 				yield* this._interrupt(true);
+				flags.i = true;
 				break ;
 
 			case "JSR":
@@ -377,28 +396,26 @@ CPU.prototype._runtime = function* () {
 				yield null;
 				break;
 
-
 			// Branching
 			case "JMP":
 				this.pc = ea;
 				break ;
 
-
 			// Flags
-			case "SED":
-				this.flags.d = true;
-				break ;
 			case "SEC":
 				this.flags.c = true;
+				break ;
+			case "SED":
+				this.flags.d = true;
 				break ;
 			case "SEI":
 				this.flags.i = true;
 				break ;
-			case "CLD":
-				this.flags.d = false;
-				break ;
 			case "CLC":
 				this.flags.c = false;
+				break ;
+			case "CLD":
+				this.flags.d = false;
 				break ;
 			case "CLI":
 				this.flags.i = false;
@@ -459,6 +476,13 @@ CPU.prototype._runtime = function* () {
 			case "EOR":
 				this.a = nz(this._peek(ea) ^ this.a);
 				yield null;
+				break ;
+			case "BIT":
+				temp = this._peek(ea);
+				flags.n = temp & 0x80;
+				flags.v = temp & 0x40;
+				flags.z = !(temp & this.a);
+				yield null
 				break ;
 
 			// Math / comparisons
