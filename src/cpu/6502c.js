@@ -635,8 +635,8 @@ CPU.prototype._runtime = function* () {
 
 		        // All flags are like binary mode
 		        flags.v = (this.a ^ temp) & (this.a ^ result) & 0x80;
-		        nz(o & 0xFF);
-		        flags.c = o >= 0;
+		        nz(result & 0xFF);
+		        flags.c = result >= 0;
 
 		        if (flags.d) {
 		            var al = (this.a & 0x0F) - (data & 0x0F) - (flags.c ? 0 : 1),
@@ -649,7 +649,7 @@ CPU.prototype._runtime = function* () {
 		            result = (al & 0x0F) + ah;
 		        }
 
-		        cpu.a = result & 0xFF;
+		        this.a = result & 0xFF;
 				yield null;
 		        break ;
 
