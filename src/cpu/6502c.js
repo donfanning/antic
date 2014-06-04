@@ -1,13 +1,3 @@
-/**
-	Currently Missing Operations:
-
-	ASL	....	arithmetic shift left
-	LSR	....	logical shift right
-	ROL	....	rotate left
-	ROR	....	rotate right
-
- **/
-
 var constants = require("./const.js");
 
 var IMPLIED = constants.IMPLIED,
@@ -122,6 +112,30 @@ CPU.prototype._runtime = function* () {
 		flags.n = data & 0x80;
 		flags.z = !data;
 		return data;
+	}
+
+	function ror(data) {
+		var out = (data >> 1) | (flags.c ? 0x80 : 0);
+		flags.c = data & 0x01;
+		return nz(out);
+	}
+
+	function rol(data) {
+		var out = ((data << 1) | (flags.c ? 0x01 : 0)) & 0xFF;;
+		flags.c = data & 0x80;
+		return nz(out);
+	}
+
+	function lsr(data) {
+		var out = (data >> 1)
+		flags.c = data & 0x01;
+		return nz(out);
+	}
+
+	function asl(data) {
+		var out = (data << 1) & 0xFF;
+		flags.c = data & 0x80;
+		return nz(out);
 	}
 
 	// Execute forever
@@ -298,7 +312,27 @@ CPU.prototype._runtime = function* () {
 			}
 			continue ;
 		case ACCUMULATOR:
-			throw new Error("ACCUMULATOR MODE INSTRUCTIONS INCOMPLETE");
+			// Fake instruction load
+			this._peek(this.pc);
+			yield null;
+
+			switch (operation.operation) {
+			case 'ASL':
+				this.a = asl(this.a);
+				break ;
+			case 'LSR':
+				this.a = lsr(this.a);
+				break ;
+			case 'ROR':
+				this.a = ror(this.a);
+				break ;
+			case 'ROL':
+				this.a = rol(this.a);
+				break ;
+			default:
+				throw new Error("ACCUMULATOR MODE INSTRUCTIONS INCOMPLETE");
+			}
+			continue;
 		}
 
 		// Process actual instruction
@@ -483,6 +517,38 @@ CPU.prototype._runtime = function* () {
 				flags.v = temp & 0x40;
 				flags.z = !(temp & this.a);
 				yield null
+				break ;
+			case 'ASL':
+				temp = this._peek(ea);
+				yield null;
+				this._poke(ea, temp);
+				yield null;
+				this._poke(ea, asl(temp));
+				yield null;
+				break ;
+			case 'LSR':
+				temp = this._peek(ea);
+				yield null;
+				this._poke(ea, temp);
+				yield null;
+				this._poke(ea, lsr(temp));
+				yield null;
+				break ;
+			case 'ROR':
+				temp = this._peek(ea);
+				yield null;
+				this._poke(ea, temp);
+				yield null;
+				this._poke(ea, ror(temp));
+				yield null;
+				break ;
+			case 'ROL':
+				temp = this._peek(ea);
+				yield null;
+				this._poke(ea, temp);
+				yield null;
+				this._poke(ea, rol(temp));
+				yield null;
 				break ;
 
 			// Math / comparisons
