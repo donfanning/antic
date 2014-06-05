@@ -213,11 +213,11 @@ reserved
 
 register
 	= name:register_name !identifier_character _
-		{ return name }
+		{ return name.toUpperCase() }
 
 instruction
 	= name:instruction_name !identifier_character _
-		{ return name }
+		{ return name.toUpperCase() }
 
 instruction_name
 	= "ADC"i / "AND"i / "ASL"i / "BCC"i / "BCS"i / "BEQ"i / "BIT"i / "BMI"i 

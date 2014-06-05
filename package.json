@@ -29,5 +29,9 @@
     "browserify-ejs": "0.0.2",
     "grunt-contrib-less": "~0.11.1",
     "browserify-pegjs": "~0.8.0-2"
+  },
+  "devDependencies": {
+    "pegjs-require": "0.0.1",
+    "mocha": "~1.20.1"
   }
 }
