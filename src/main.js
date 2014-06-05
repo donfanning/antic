@@ -1,5 +1,6 @@
 var TestMachine = require("./machines/test.js"),
-	UI = require("./ui.js");
+	UI = require("./ui.js"),
+	assembler = require("./assembler");
 
 
 var xhr = new XMLHttpRequest();

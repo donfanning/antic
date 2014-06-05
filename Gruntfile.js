@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 					'public/assets/main.js': ['src/**/*']
 				},
 				options: {
-					transform: ["browserify-ejs"],
+					transform: ["browserify-ejs", ["browserify-pegjs", { cache: true }]],
 					bundleOptions: { debug: true },
 					watch: true
 				}

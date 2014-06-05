@@ -41,9 +41,8 @@ function CPU() {
 	this._generator = this._runtime();
 }
 
-CPU.prototype._regenerate = function () {
-	this._generator = this._runtime();
-};
+CPU.prototype.instructions = require("./instructions.js");
+CPU.prototype.disassemble = require("./disassemble.js");
 
 Object.defineProperties(CPU.prototype, {
 	p: {
@@ -66,10 +65,6 @@ Object.defineProperties(CPU.prototype, {
 		}
 	}
 });
-
-CPU.prototype.instructions = require("./instructions.js");
-
-CPU.prototype.disassemble = require("./disassemble.js");
 
 CPU.prototype._nextbyte = function () {
 	var data = this._peek(this.pc);
