@@ -1,5 +1,14 @@
 module.exports = function(grunt) {
 	var config = {
+		mochaTest: {
+			test: {
+				options: {
+					reporter: 'spec',
+					require: 'pegjs-require'
+				},
+				src: ['test/**/*.js']
+			}
+		},
 		connect: {
 			server: {
 				options: {
@@ -45,7 +54,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-mocha-test');
 
+	grunt.registerTask("test", ["mochaTest"]);
 	grunt.registerTask("default", ["less", "browserify"]);
 	grunt.registerTask("dev", ["connect", "browserify", "watch"]);
 };
