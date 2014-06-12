@@ -116,21 +116,19 @@ CPU.prototype._runtime = function* () {
 	}
 
 	function rol(data) {
-		var out = ((data << 1) | (flags.c ? 0x01 : 0)) & 0xFF;;
+		var out = ((data << 1) | (flags.c ? 0x01 : 0)) & 0xFF;
 		flags.c = data & 0x80;
 		return nz(out);
 	}
 
 	function lsr(data) {
-		var out = (data >> 1)
 		flags.c = data & 0x01;
-		return nz(out);
+		return nz(data >> 1);
 	}
 
 	function asl(data) {
-		var out = (data << 1) & 0xFF;
 		flags.c = data & 0x80;
-		return nz(out);
+		return nz((data << 1) & 0xFF);
 	}
 
 	// Execute forever
@@ -456,22 +454,28 @@ CPU.prototype._runtime = function* () {
 			// Load / Store
 			case "LDA":
 				this.a = nz(this._peek(ea));
+				yield null;
 				break ;
 			case "LDX":
 				this.x = nz(this._peek(ea));
+				yield null;
 				break ;
 			case "LDY":
 				this.y = nz(this._peek(ea));
+				yield null;
 				break ;
 
 			case "STA":
 				this._poke(ea, this.a);
+				yield null;
 				break ;
 			case "STX":
 				this._poke(ea, this.x);
+				yield null;
 				break ;
 			case "STY":
 				this._poke(ea, this.y);
+				yield null;
 				break ;
 
 			case "TAX":

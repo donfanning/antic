@@ -4,9 +4,9 @@ module.exports = function(grunt) {
 			test: {
 				options: {
 					reporter: 'spec',
-					require: 'pegjs-require'
+					require: './test/helper.js'
 				},
-				src: ['test/**/*.js']
+				src: ['test/**/*.js', "!test/helper.js"]
 			}
 		},
 		connect: {
