@@ -17,6 +17,8 @@ instance
 directive
 	= ".def" _ name:identifier exp:expression
 		{ return { type: "Define", length: exp } }
+	/ ".memory" _ exp:expression
+		{ return { type: "SetMemoryMode", length: exp } }
 	/ ".org" _ exp:expression
 		{ return { type: "SetOrigin", length: exp } }
 	/ ".db" _ exp:expression_list
@@ -89,8 +91,8 @@ argument
 		{ return { type: "Implied" } }
 
 label
-	= local:"@"? _ label:identifier ":" _
-		{ return { type: "Label", name: label, local: Boolean(local) } }
+	= label:identifier ":" _
+		{ return { type: "Label", name: label } }
 
 expression
 	= logical_or_expression
