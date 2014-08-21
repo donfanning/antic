@@ -629,28 +629,28 @@ CPU.prototype._runtime = function* () {
 
 
 			case "SBC":
-        		temp = this._peek(ea);
-            	result = this.a - temp - (flags.c ? 0 : 1);
+				temp = this._peek(ea);
+				result = this.a - temp - (flags.c ? 0 : 1);
 
-		        // All flags are like binary mode
-		        flags.v = (this.a ^ temp) & (this.a ^ result) & 0x80;
-		        nz(result & 0xFF);
-		        flags.c = result >= 0;
+				// All flags are like binary mode
+				flags.v = (this.a ^ temp) & (this.a ^ result) & 0x80;
+				nz(result & 0xFF);
+				flags.c = result >= 0;
 
-		        if (flags.d) {
-		            var al = (this.a & 0x0F) - (data & 0x0F) - (flags.c ? 0 : 1),
-		                ah = (this.a & 0xF0) - (data & 0xF0) - ((al < 0) ? 0x10 : 0);
+				if (flags.d) {
+					var al = (this.a & 0x0F) - (data & 0x0F) - (flags.c ? 0 : 1),
+						ah = (this.a & 0xF0) - (data & 0xF0) - ((al < 0) ? 0x10 : 0);
 
-		            // Calculate fix up decimal mode
-		            if (al < 0x00) { al -= 0x06; }
-		            if (ah < 0x00) { ah -= 0x60; }
+					// Calculate fix up decimal mode
+					if (al < 0x00) { al -= 0x06; }
+					if (ah < 0x00) { ah -= 0x60; }
 
-		            result = (al & 0x0F) + ah;
-		        }
+					result = (al & 0x0F) + ah;
+				}
 
-		        this.a = result & 0xFF;
+				this.a = result & 0xFF;
 				yield null;
-		        break ;
+				break ;
 
 			default:
 				throw new Error("Unhandled operation: " + operation.operation);

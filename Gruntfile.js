@@ -1,4 +1,37 @@
+var path = require("path"),
+	through = require("through"),
+	fs = require("fs");
+
 module.exports = function(grunt) {
+	function RawFile(file, options) {
+		if (path.extname(file) !== ".bin") return through();
+		
+		options = options || {};
+		options.output = "source";
+
+		var src = [];
+		return through(write, end);
+
+		function write(chunk) {
+			var block = [];
+			for (var i = 0; i < chunk.length; i++) {
+				block.push(chunk[i]);
+				if (block.length >= 32) {
+					src.push(block.join(", "));
+					block = [];
+				}
+			}
+			
+			if (block.length) { src.push(block.join(", ")); }
+		}
+
+		function end() {
+			var contents = "module.exports = [1];"//\n\t" + src.join(",\n\t") + "\n];";
+			this.emit("data", contents);
+			this.emit("end");
+		}
+	}
+
 	var config = {
 		mochaTest: {
 			test: {
@@ -30,11 +63,17 @@ module.exports = function(grunt) {
 		browserify: {
 			dev: {
 				files: {
-					'public/assets/main.js': ['src/**/*']
+					'public/assets/main.js': ['src/main.js']
 				},
 				options: {
-					transform: ["browserify-ejs", ["browserify-pegjs", { cache: true }]],
-					bundleOptions: { debug: true },
+					transform: [
+						RawFile,
+						["browserify-pegjs", { cache: true }], 
+						"browserify-ejs"
+					],
+					browserifyOptions: { 
+						debug: true
+					},
 					watch: true
 				}
 			}

@@ -1,6 +1,7 @@
-var CPU = require("../cpu/6502c.js");
+var CPU = require("../cpu/6502c.js"),
+	rom = require("./6502_functional_test.bin");
 
-function TestMachine(rom) {
+function TestMachine() {
 	this.cpu = new CPU();
 
 	this.cpu._operation_address =
